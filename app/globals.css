@@ -2,32 +2,127 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.react-calendar {
+  padding: 25px;
+  width: 400px !important;
+  border-radius: 25px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border: 1px solid #d6d6d6 !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.react-calendar__month-view__weekdays {
+  text-transform: none !important;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.react-calendar__tile {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px !important;
+  /* max-width: 42px !important;
+    height: 42px !important; */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.react-calendar__month-view__days__day--neighboringMonth {
+  font-weight: 500;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: #212529 !important;
+}
+
+.react-calendar__tile--active {
+  background: #ff3b30 !important;
+  border-radius: 50%;
+  color: white !important;
+  max-width: 40px !important;
+  height: 40px !important;
+  font-weight: 500;
+  margin: 0 4px !important;
+}
+.react-calendar__navigation__next2-button,
+.react-calendar__navigation__prev2-button {
+  display: none;
+}
+
+.react-calendar__navigation {
+  border-bottom: 1px dotted #bfbebe;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.react-calendar__navigation__label__labelText {
+  font-weight: 900;
+  font-size: 21px;
+}
+
+.react-calendar__navigation__prev-button,
+.react-calendar__navigation__next-button {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  transform: rotate(90deg);
+  border: solid 1px #eee !important;
+  border-radius: 12px !important;
+  position: relative;
+  overflow: hidden;
+}
+.react-calendar__navigation__next-button {
+  transform: rotate(-90deg);
+}
+
+.react-calendar__navigation__prev-button::before,
+.react-calendar__navigation__next-button::before {
+  content: "›";
+  font-size: 30px !important;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: translate(2%, 10%);
+  left: 0;
+  top: 0;
+  background-color: white;
+}
+
+/* Example CSS for Time Slot Buttons */
+
+/* Container for time slots */
+.time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  gap: 8px; /* Adjust spacing between buttons */
+  height: 250px;
+}
+
+/* Time slot button style */
+.time-slot-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 3px;
+  height: 40px;
+  width: 120px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect */
+.time-slot-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Active (selected) button style */
+.time-slot-button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+/* Disabled button style (for lunch break) */
+.time-slot-button.disabled {
+  background-color: #777;
+  cursor: not-allowed;
+}
+
+.modal-box {
+  max-width: 24rem !important;
 }
